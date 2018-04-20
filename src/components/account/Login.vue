@@ -2,11 +2,11 @@
     <div class="login">
         <section >
          <el-form :model="ruleForm2" label-position="top" status-icon :rules="rules2" ref="a" label-width="100px" class="demo-ruleForm">
-          <el-form-item label="账号" prop="uname" >
-            <el-input type="password" v-model="ruleForm2.uname" auto-complete="off"></el-input>
+          <el-form-item label="账号" prop="user_name" >
+            <el-input type="text" v-model="ruleForm2.user_name" auto-complete="off"></el-input>
           </el-form-item>
-          <el-form-item label="密码" prop="upwd">
-            <el-input type="password" v-model="ruleForm2.upwd" auto-complete="off"></el-input>
+          <el-form-item label="密码" prop="password">
+            <el-input type="password" v-model="ruleForm2.password" auto-complete="off"></el-input>
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="submitForm('a')">登录</el-button>
@@ -31,7 +31,7 @@
           //     callback(new Error('请输入账号'));
           //   } else {
           //     if (this.ruleForm2.checkPass !== '') {
-          //       this.$refs.ruleForm2.validateField('uname');
+          //       this.$refs.ruleForm2.validateField('user_name');
           //     }
           //     callback();
           //   }
@@ -39,15 +39,15 @@
       /* 一般按照接口文档传参数据进行修改 */
       return {
         ruleForm2: {
-         uname: '',
-         upwd: '',
+         user_name: '',
+         password: '',
         },
         
         /* 表单验证规则 */
         /* 校验规则跟prop是相关联，所以需要更改，这个校验字段可以有多个 */
         rules2: {
           /* 密码 */
-          uname: [
+          user_name: [
             /* validator单词：验证器，trigger单词：触发 
             validatePass是一个函数，当return出去的时候，触发上面的函数 }
           ],*/
@@ -55,7 +55,7 @@
             { required: true, message: '请输入账号', trigger: 'blur' }
           ],
           /* 再次确认密码 */
-          upwd: [
+          password: [
             {  required: true, message: '请输入密码', trigger: 'blur' }
           ],
         }
@@ -69,9 +69,9 @@
            
            if (res.data.status==0) {
              /* 登录跳转之前把数据存到浏览器中 */
-             localStorage.setItem("uname",res.data.message.uname)
+             localStorage.setItem("user_name",res.data.message.user_name)
              /* 当登录成功的时候进行跳转 */
-              this.$router.push({ name: 'admin'});
+              this.$router.push({ name: "list"});
            }else{
               this.$message({
                 showClose: true,

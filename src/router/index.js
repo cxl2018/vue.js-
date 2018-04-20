@@ -15,13 +15,13 @@ import Shopcart from "../components/shop/shopcart/Shopcart.vue"
 Vue.use(Router)
 
 const goods = [
-  { name: "detail", path: "detail", component: Detail},
+  { name: "detail", path: "detail/:id", component: Detail},
   { name: "list", path: "list", component: List },
 ]
 const ords = [
   { name: "complate", path: "complate", component: Complate },
   { name: "pay", path: "pay", component: Pay },
-  { name: "site", path: "site", component: Site },
+  { name: "site", path: "site/:id", component: Site },
 ]
 const shopcart = [
   { name: "shopcart", path: "shopcart", component: Shopcart },

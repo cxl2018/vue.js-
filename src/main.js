@@ -6,12 +6,22 @@ import App from './App'
 import router from './router'
 import "./less/index.less"
 
+/* 需要用到vuex的全局数据，所以需要用到 */
+import Vuex from "vuex"
+
 /* 引入ui文件 */
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
+/* 引入样式 */
+import "./assets/css/style.css"
+
+/* 引入vuex的文件 */
+import Car from "./store/car.js"
+
 /* 启用 */
 Vue.use(ElementUI)
+Vue.use(Vuex)
 
 /* 安裝后导入类库，为了让初始化默认统一样式 */
 import 'normalize.css'
@@ -37,5 +47,7 @@ new Vue({
   el: '#app',
   router,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  /* new一个vuex */
+  store: new Vuex.Store(Car)
 })
